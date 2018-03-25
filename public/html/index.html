@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <title>Marj & Wayne - 60th</title>
+  <link href="css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Italianno|Lovers+Quarrel|Allura" rel="stylesheet">
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+
+  <header id="header" class="header-float">
+    <div class="header-title">
+      <h1 class="header-title-text">Marj & Wayne</h1>
+    </div>
+    <ul class="header-nav">
+      <li id="nav-s1" class="header-nav-item">Event</li>
+      <li class="header-nav-item">Album</li>
+      <li class="header-nav-item header-nav-selected">RSVP</li>
+    </ul>
+  </header>
+
+  <section id="section0" class="section">
+    <div class="section0-titles">
+      <h1 class="section0-title">Marj & Wayne</h1>
+      <h2 class="section0-subtitle">Celebrating 60 Years</h2>
+    </div>
+  </section>
+
+  <section id="section1" class="section">
+    <div class="event-details-container container flex-column">
+      <h3 class="event-details-title">Event Details</h3>
+      <div class="flex-column event-details-items">
+        <div class="event-details-item">
+          <img id="event-icon-1" class="event-icon" src="date1.svg">
+          <p>July 7, 2018</p> </div>
+        <div class="event-details-item">
+          <img id="event-icon-2" class="event-icon" src="cocktail1.svg">
+          <p>5pm</p> </div>
+        <div class="event-details-item">
+          <img id="event-icon-3" class="event-icon" src="dinner1.svg">
+          <p>6pm</p> </div>
+        <div class="event-details-item">
+          <img id="event-icon-4" class="event-icon" src="location1.svg">
+          <p>Cedar Room, Parktown Hotel</p> </div>
+      </div>
+      <div id="map" class="event-details-map"></div>
+    </div>
+  </section>
+
+  <section id="section2" class="section">
+    <div class="pv-container container"></div>
+  </section>
+
+  <section id="section3" class="section">
+    <div class="rsvp-container container">
+      <h3 class="rsvp-title">Rsvp</h3>
+      <p class="rsvp-text">No gifts, please; your presence is all we ask for.</p>
+      <p class="rsvp-text">Let us know that you can make it!</p>
+      <form action="/rsvp" method="post" class="rsvp-form" onsubmit="return validateRsvp();">
+        <div class="flex-column rsvp-guests">
+          <input name="guest1" class="rsvp-guest" type="text" placeholder="Guest Name">
+        </div>
+        <div class="flex-row-between rsvp-buttons">
+          <button class="rsvp-button" type="button" onclick="addGuest()">Add Guest</button>
+          <input class="rsvp-button" type="submit" value="RSVP">
+        </div>
+        <p class="rsvp-valid-text">*Please enter guest names before submitting.</p>
+      </form>
+    </div>
+  </section>
+
+  <script src="js/images.js"></script>
+  <script src="js/photoViewer.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaWhyQjUsDVLOQEuwJaPMhJcSa3fvbyfY&callback=initMap"></script>
+</body>
+</html>
