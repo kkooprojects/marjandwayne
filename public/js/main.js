@@ -58,6 +58,16 @@ $(function() {
     }, 500);
   });
 
+  $("#rsvp-checkbox1").change(function() {
+    if (this.checked) {
+      $("#rsvp-checkbox2").prop('checked', false);
+    }
+  });
+  $("#rsvp-checkbox2").change(function() {
+    if (this.checked) {
+      $("#rsvp-checkbox1").prop('checked', false);
+    }
+  });
 });
 
 
@@ -65,11 +75,12 @@ $(function() {
 // RSVP
 function addGuest() {
   var guests = $(".rsvp-guest");
-  if (guests.length >= 7)
+  if (guests.length >= 5)
     return;
   $(".rsvp-guests").append('<input name="guest' + (guests.length+1)
     + '" class="rsvp-guest" type="text" placeholder="Guest Name">');
 }
+
 function validateRsvp() {
   var validInputFound = false;
 
@@ -79,12 +90,20 @@ function validateRsvp() {
     }
   });
 
-  if (validInputFound === true) {
-    return true;
-  }
-  else {
+  let checked1 = document.getElementById("rsvp-checkbox1").checked;
+  let checked2 = document.getElementById("rsvp-checkbox2").checked;
+  if (validInputFound === false) {
+    $(".rsvp-valid-text").text("*Please enter guest names before submitting.");
     $(".rsvp-valid-text").css({ 'visibility': 'visible' });
     return false;
+  }
+  else if (checked1 == checked2) {
+    $(".rsvp-valid-text").text("*Please check one box to indicate if you are coming.");
+    $(".rsvp-valid-text").css({ 'visibility': 'visible' });
+    return false;
+  }
+  else {
+    return true;
   }
 }
 

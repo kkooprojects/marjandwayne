@@ -31,10 +31,20 @@ app.get('/', function(req, res) {
 });
 
 app.post('/rsvp', function(req, res) {
-
 	var guests = "";
+	let go, nogo = false;
 	Object.keys(req.body).forEach(function(key) {
-		guests += req.body[key] + "\n";
+		if (key == "go") {
+			mailOptions.subject = 'RSVP guests received - COMING';
+			go = true;
+		}
+		else if (key == "nogo") {
+			mailOptions.subject = 'RSVP guests received - NOT COMING';
+			nogo = true;
+		}
+		else {
+			guests += req.body[key] + "\n";
+		}
 	});
 	mailOptions.text = guests;
 
@@ -42,8 +52,11 @@ app.post('/rsvp', function(req, res) {
 		if (err) {
 
 		}
-		else {
+		else if (go) {
 			res.sendFile(__dirname + '/public/html/thankyou.html');
+		}
+		else if (nogo) {
+			res.sendFile(__dirname + '/public/html/sorry.html');
 		}
 	});
 });

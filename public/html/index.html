@@ -67,11 +67,17 @@
         <div class="flex-column rsvp-guests">
           <input name="guest1" class="rsvp-guest" type="text" placeholder="Guest Name">
         </div>
+        <div class="rsvp-checkboxes">
+          <div><input id="rsvp-checkbox1" class="rsvp-checkbox-box" type="checkbox" name="go">
+            <label class="rsvp-checkbox-text" for="go">I can make it!</label></div>
+          <div><input id="rsvp-checkbox2" class="rsvp-checkbox-box" type="checkbox" name="nogo">
+            <label class="rsvp-checkbox-text" for="nogo">Sorry, I won't be attending.</label></div>
+        </div>
         <div class="flex-row-between rsvp-buttons">
           <button class="rsvp-button" type="button" onclick="addGuest()">Add Guest</button>
           <input class="rsvp-button" type="submit" value="RSVP">
         </div>
-        <p class="rsvp-valid-text">*Please enter guest names before submitting.</p>
+        <p class="rsvp-valid-text"></p>
       </form>
     </div>
   </section>
